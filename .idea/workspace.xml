@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="Adding database" />
+    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="restoring styles">
+      <change beforePath="$PROJECT_DIR$/cache/production/data_global.php" beforeDir="false" afterPath="$PROJECT_DIR$/cache/production/data_global.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,23 +45,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0028071529105929" />
-      <entry key="MS500" value="1.5977285392293425" />
-      <entry key="S2" value="3.365437225814424" />
-      <entry key="S5" value="4.22811173751413" />
-      <entry key="S10" value="4.590839589139078" />
-      <entry key="S30" value="4.858071824363648" />
-      <entry key="S60" value="4.928317839798677" />
-      <entry key="M2" value="4.96418475446294" />
-      <entry key="M5" value="5.070113814585394" />
-      <entry key="M10" value="5.720708848388942" />
-      <entry key="M15" value="6.556854027825768" />
-      <entry key="M30" value="8.486210441779468" />
-      <entry key="H1" value="10.39453703254798" />
-      <entry key="H2" value="11.863059894052034" />
-      <entry key="H4" value="12.820897380016758" />
-      <entry key="D1" value="13.784819970575032" />
-      <entry key="W1" value="13.968750640474735" />
+      <entry key="MS100" value="1.00076105453047" />
+      <entry key="MS500" value="1.2959412421052086" />
+      <entry key="S2" value="2.5642257719975774" />
+      <entry key="S5" value="3.7453450201990743" />
+      <entry key="S10" value="4.587142709054619" />
+      <entry key="S30" value="5.440293221757796" />
+      <entry key="S60" value="5.707020082534656" />
+      <entry key="M2" value="5.871938051511929" />
+      <entry key="M5" value="6.519081941574686" />
+      <entry key="M10" value="7.904229121814979" />
+      <entry key="M15" value="9.16246791939722" />
+      <entry key="M30" value="11.90235004881803" />
+      <entry key="H1" value="14.671224374557086" />
+      <entry key="H2" value="16.835772886151936" />
+      <entry key="H4" value="18.253380833308757" />
+      <entry key="D1" value="19.681219296844816" />
+      <entry key="W1" value="19.953705140363613" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -81,23 +83,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9619554244510743" />
-      <entry key="MS500" value="1.581809126489803" />
-      <entry key="S2" value="3.352728087952687" />
-      <entry key="S5" value="4.221068058783593" />
-      <entry key="S10" value="4.5868918156013985" />
-      <entry key="S30" value="4.856649871689289" />
-      <entry key="S60" value="4.927592835193207" />
-      <entry key="M2" value="4.963816547075527" />
-      <entry key="M5" value="5.069662272581579" />
-      <entry key="M10" value="5.719421254559088" />
-      <entry key="M15" value="6.5551070853175055" />
-      <entry key="M30" value="8.484318901431918" />
-      <entry key="H1" value="10.393082582558904" />
-      <entry key="H2" value="11.862132981397409" />
-      <entry key="H4" value="12.82036769875022" />
-      <entry key="D1" value="13.784720438477189" />
-      <entry key="W1" value="13.968736112646866" />
+      <entry key="MS100" value="0.13656686628234926" />
+      <entry key="MS500" value="0.9638246881785808" />
+      <entry key="S2" value="2.4651636425076435" />
+      <entry key="S5" value="3.70335137066109" />
+      <entry key="S10" value="4.565522589884884" />
+      <entry key="S30" value="5.432899550207197" />
+      <entry key="S60" value="5.703295463911861" />
+      <entry key="M2" value="5.870066777600902" />
+      <entry key="M5" value="6.518280616255333" />
+      <entry key="M10" value="7.903418497242373" />
+      <entry key="M15" value="9.161369736945918" />
+      <entry key="M30" value="11.900907043358265" />
+      <entry key="H1" value="14.669947774922953" />
+      <entry key="H2" value="16.834894754168424" />
+      <entry key="H4" value="18.252858902067494" />
+      <entry key="D1" value="19.681117903936357" />
+      <entry key="W1" value="19.953690255677092" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -208,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795701677945</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="restoring styles">
+      <option name="closed" value="true" />
+      <created>1795702565885</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1795702565885</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +226,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding database" />
+    <MESSAGE value="restoring styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="restoring styles" />
   </component>
 </project>
