@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>AI Search Service Test</title>
+        <meta charset="UTF-8" />
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 24px;
+            }
+            button {
+                margin: 6px 6px 6px 0;
+                padding: 8px 12px;
+            }
+            pre {
+                background: #f4f4f4;
+                padding: 12px;
+                border: 1px solid #ddd;
+                white-space: pre-wrap;
+            }
+            .ok {
+                color: green;
+                font-weight: bold;
+            }
+            .err {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>AI Search Service Test</h1>
+
+        <button onclick="testHealth()">1. Health</button>
+        <button onclick="testUpsert()">2. Upsert test document</button>
+        <button onclick="testSearch()">3. Search</button>
+        <button onclick="testPurge()">4. Purge index</button>
+
+        <hr/>
+
+        <h3>Response</h3>
+        <pre id="output">Waiting...</pre>
+
+        <script>
+            const SERVICE_URL = 'http://localhost:8080';
+            const CLIENT_ID = 'phpbb-prod';
+            const SHARED_SECRET = 'change-me'; // use the real secret here
+
+            function log(msg) {
+                document.getElementById('output').textContent = msg;
+            }
+
+            async function sha256Hex(text) {
+                const buf = new TextEncoder().encode(text);
+                const hash = await crypto.subtle.digest('SHA-256', buf);
+                return Array.from(new Uint8Array(hash))
+                        .map(b => b.toString(16).padStart(2, '0'))
+                        .join('');
+            }
+
+            async function hmacSha256Hex(secret, message) {
+                const enc = new TextEncoder();
+                const key = await crypto.subtle.importKey(
+                        'raw', enc.encode(secret), {name: 'HMAC', hash: 'SHA-256'}, false, ['sign']
+                        );
+                const sig = await crypto.subtle.sign('HMAC', key, enc.encode(message));
+                return Array.from(new Uint8Array(sig))
+                        .map(b => b.toString(16).padStart(2, '0'))
+                        .join('');
+            }
+
+            async function signedRequest(path, payload, method = 'POST') {
+                const body = JSON.stringify(payload);
+                const timestamp = String(Math.floor(Date.now() / 1000));
+                const nonce = crypto.getRandomValues(new Uint32Array(4)).join('-');
+                const bodyHash = await sha256Hex(body);
+                const canonical = [method, path, timestamp, nonce, bodyHash].join('\n');
+                const signature = await hmacSha256Hex(SHARED_SECRET, canonical);
+
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'X-Client-Id': CLIENT_ID,
+                    'X-Timestamp': timestamp,
+                    'X-Nonce': nonce,
+                    'X-Body-Sha256': bodyHash,
+                    'X-Signature': signature
+                };
+
+                return fetch(SERVICE_URL + path, {
+                    method,
+                    headers,
+                    body: method === 'GET' ? undefined : body
+                });
+            }
+
+            async function testHealth() {
+                try {
+                    const response = await fetch(SERVICE_URL + '/v1/health');
+                    const text = await response.text();
+                    log('HEALTH\nStatus: ' + response.status + '\nBody:\n' + text);
+                } catch (e) {
+                    log('HEALTH ERROR\n' + e);
+                }
+            }
+
+            async function testUpsert() {
+                try {
+                    const payload = {
+                        traceId: 'test-trace-' + Date.now(),
+                        documents: [
+                            {
+                                documentId: 'test:doc:' + Date.now(),
+                                sourceType: 'phpbb_post',
+                                sourceId: 99999,
+                                forumId: 1,
+                                topicId: 1,
+                                postId: 99999,
+                                authorId: 2,
+                                title: 'AI Search smoke test',
+                                content: 'This is a smoke test document for the AI search service. It mentions search and indexing.',
+                                url: 'https://example.com/test-post',
+                                visibility: 'approved',
+                                permissionScope: {forumIds: [1]},
+                                updatedAt: new Date().toISOString(),
+                                contentHash: 'smoke-test-hash'
+                            }
+                        ]
+                    };
+
+                    const response = await signedRequest('/v1/index/upsert', payload, 'POST');
+                    const text = await response.text();
+                    log('UPSERT\nStatus: ' + response.status + '\nBody:\n' + text);
+                } catch (e) {
+                    log('UPSERT ERROR\n' + e);
+                }
+            }
+
+            async function testSearch() {
+                try {
+                    const payload = {
+                        traceId: 'test-search-' + Date.now(),
+                        query: 'AI search smoke test',
+                        topK: 10,
+                        filters: {
+                            forumIds: [1],
+                            visibility: ['approved']
+                        },
+                        userContext: {
+                            userId: 2,
+                            lang: 'en'
+                        }
+                    };
+
+                    const response = await signedRequest('/v1/search', payload, 'POST');
+                    const text = await response.text();
+                    log('SEARCH\nStatus: ' + response.status + '\nBody:\n' + text);
+                } catch (e) {
+                    log('SEARCH ERROR\n' + e);
+                }
+            }
+
+            async function testPurge() {
+                try {
+                    const payload = {traceId: 'test-purge-' + Date.now()};
+                    const response = await signedRequest('/v1/index/purge', payload, 'POST');
+                    const text = await response.text();
+                    log('PURGE\nStatus: ' + response.status + '\nBody:\n' + text);
+                } catch (e) {
+                    log('PURGE ERROR\n' + e);
+                }
+            }
+        </script>
+    </body>
+</html>
