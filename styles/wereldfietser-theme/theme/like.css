@@ -1,0 +1,49 @@
+#phpbb .like_info {
+  margin-bottom: inherit;
+  background: url('./images/heart-white-12.png');
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+}
+
+#phpbb .like {
+  margin-left: 0.25em;
+  background: rgba(0, 0, 0, 0) url("./images/plus5-uit.png") repeat scroll 0 0;
+}
+
+#phpbb .liked {
+  margin-left: 0.25em;
+  background: rgba(0, 0, 0, 0) url("./images/plus5-aan.png") repeat scroll 0 0;
+}
+
+#phpbb .like_info::before,
+#phpbb .like::before,
+#phpbb .liked::before {
+  content: unset;
+}
+
+#phpbb .postlove {
+  margin-right: 15px;
+}
+
+.online {
+  background-image: none;
+}
+
+.header-image {
+  background-position: center center;
+}
+
+.notice {
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+.search .postbody h3 {
+  padding-left: 15px;
+  font-size: 1.5em;
+}
+
+.search .postbody,
+.search ul.searchresults {
+  padding-top: 15px;
+}

@@ -1,0 +1,19 @@
+services:
+    wf.gpxviewer.listener:
+        class: wf\gpxviewer\event\main_listener
+        arguments:
+            - '@template'
+            - '@language'
+            - '@config'
+        tags:
+            - { name: event.listener }
+
+    wf.gpxviewer.controller.acp:
+        class: wf\gpxviewer\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'

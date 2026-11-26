@@ -1,0 +1,14 @@
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\AiSearchJaxRsApplication.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\config\AiSearchProperties.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\controller\AiSearchResource.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\core\IndexedDocument.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\core\IndexStoreService.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\AckResponse.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\IndexDeleteRequest.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\IndexUpsertRequest.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\SearchRequest.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\SearchResponse.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\SearchResult.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\model\TraceOnlyRequest.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\security\CachedBodyHttpServletRequest.java
+C:\xampp\htdocs\phpbb3\ext\acme\aisearch\ai-search\src\main\java\acme\aisearch\service\security\HmacAuthFilter.java

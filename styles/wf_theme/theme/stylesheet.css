@@ -1,0 +1,268 @@
+/*  phpBB3 Style Sheet
+        --------------------------------------------------------------
+        Style name:			   ComBoot Free
+        Based on style:
+        Original author:	 Tom Beddard ( http://www.subblue.com/ )
+        Modified by:		   phpBB Limited ( https://www.phpbb.com/ )
+        Customised by:		 Florian Gareis ( http://www.florian-gareis.de/ )
+        Version:			     1.1-rc5
+        Notes:				     Compiled with less (original file: /comboot/comboot.less)
+        --------------------------------------------------------------
+*/
+
+@import url("comboot/comboot.css");
+@import url("like.css");
+
+@font-face {
+    font-family: 'TTPolls-Bold';
+    src:  url('TTPolls-Bold.eot?#iefix') format('embedded-opentype'),
+        url('TTPolls-Bold.woff') format('woff'),
+        url('TTPolls-Bold.ttf')  format('truetype'),
+        url('TTPolls-Bold.svg#TTPolls-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.nav a {
+    font-family: 'TTPolls-Bold', Merriweather,Georgia,"Times New Roman",Times,serif;
+    color: #27262B !important;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    background: #fff !important;
+    color: #2e7ab5 !important;
+}
+
+#quick-links a {
+    font-family: inherit;
+}
+
+.jumbotron {
+    background: transparent url(images/wf_header.jpg) no-repeat 73% 20% !important;
+    background-size: cover !important;
+    min-height: 230px;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        background: transparent url(images/wf_header.jpg) no-repeat 0 60% !important;
+        background-size: cover  !important;
+        min-height: 320px;
+    }
+    .imageset.site_logo {
+        margin-top: -30px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        padding-top: 118px;
+    }
+}
+
+.jumbotron p {
+    display: none;
+}
+
+.jumbotron:after {
+    content: "";
+    width: 100%;
+    height: 120px;
+    display: block;
+    background: transparent url(images/blue-line.svg) no-repeat 0 60%;
+    background-size: contain;
+    position: relative;
+    top: 40px;
+    z-index: 9;
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 767px) {
+    .jumbotron:after {
+        background: transparent url(images/blue-line.svg) no-repeat 0 60%;
+        top: 30px;
+        height: 80px;
+    }
+
+
+    #main-menu-btn, #search-menu-btn, #notification-menu-btn {
+        padding: 15px 16px;
+    }
+}
+
+
+.panel-info>.panel-heading {
+    background: #F7F9F1;
+    border-color: #4F5A29;
+    color: #4F5A29;
+}
+
+.panel-info {
+    border-color: #4F5A29;
+}
+
+h1, h2, h3 {
+    font-family: 'TTPolls-Bold', Merriweather,Georgia,"Times New Roman",Times,serif;
+}
+
+.breadcrumb {
+    background: transparent;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-left: 0;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background: #F7F9F1;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #EEF1E3;
+}
+
+.panel-default>.panel-heading,
+.navbar-default {
+    background: #F7F9F1;
+}
+
+.table th.topics, .table th.posts, .table th.views {
+    width: 12%;
+}
+
+.wf_footer {
+    background: transparent url(images/footer-bg.svg) no-repeat 0 60% !important;
+    background-size: cover  !important;
+    min-height: 260px;
+    padding-top: 120px;
+}
+
+.wf_footer li {
+    display: inline-block;
+    padding-top: 22px;
+}
+
+.wf_footer li a {
+    font-family: 'TTPolls-Bold', Merriweather,Georgia,"Times New Roman",Times,serif;
+    color: #F2E6D4;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+
+/* [ON BIG SCREEN] */
+/* Wrapper */
+#page-nav {
+    width: 100%;
+    background: transparent;
+    /* If you want the navigation bar to stick on top
+    position: sticky;
+    top: 0;
+    */
+    text-align: right;
+    margin-top: -50px;
+}
+
+/* Hide Hamburger */
+#page-nav label, #hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+/* Menu Items */
+#page-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#page-nav ul li {
+    display: inline-block;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#page-nav ul li a {
+    color: #F25A4C;
+    background-color:#f2f0ef;
+    text-decoration: none;
+    font-family: "TTPolls-Bold";
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: lowercase;
+    text-shadow: 2px 2px 2px rgba(255,255,255,0.19);
+    padding: 6px;
+}
+
+#page-nav ul li.active a {
+    color: #F25A4C;
+}
+
+#page-nav ul li a:hover {
+    background-color: #F25A4C;
+    color: #f2f0ef;
+}
+
+/* [ON SMALL SCREENS] */
+@media screen and (max-width: 996px){
+    /* Show Hamburger */
+    #page-nav label {
+        display: inline-block;
+        color: #27262B;
+        background: #F7F9F1;
+        font-style: normal;
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    /* Break down menu items into vertical */
+    #page-nav ul li {
+        display: block;
+    }
+    #page-nav ul li {
+
+    }
+
+    /* Toggle show/hide menu on checkbox click */
+    #page-nav ul {
+        display: none;
+    }
+    #page-nav input:checked ~ ul {
+        display: block;
+    }
+}
+
+.topiclist .clickable {
+    cursor: default;
+}
+
+/* Toegevoegd door MM op verzoek van Bast1aan op 27-06-2022 */
+/* Hiermee worden de quotes en ook inline images van posts in sommige browsers beter leesbaar. */
+
+blockquote, .thumbnail {
+    margin: 1em 0 1em 0;
+}
+
+/* Fix for WF-leden login button visibility across all screen sizes */
+/* Bootstrap's .collapse class hides content by default, but .navbar-collapse.collapse should be shown on desktop */
+/* Explicitly ensure the user menu displays properly at all screen sizes */
+
+/* Desktop: Make sure the collapsed user-menu is visible and shows the hidden-xs content */
+@media (min-width: 768px) {
+    #user-menu.collapse.navbar-collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+}
+
+/* Mobile: Ensure the user menu dropdown works and shows visible-xs content */
+@media (max-width: 767px) {
+    #user-menu.collapse.navbar-collapse {
+        /* Keep the default collapse behavior - hidden until .in class is added by JavaScript */
+    }
+
+    #user-menu.collapse.navbar-collapse.in {
+        display: block !important;
+    }
+}
