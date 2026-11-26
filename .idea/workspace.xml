@@ -7,11 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/production/data_global.php" beforeDir="false" afterPath="$PROJECT_DIR$/cache/production/data_global.php" afterDir="false" />
-    </list>
+    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="Adding database" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,23 +43,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000130245752" />
-      <entry key="M2" value="1.0002098575873921" />
-      <entry key="M5" value="1.0849777762466903" />
-      <entry key="M10" value="1.7297098927191263" />
-      <entry key="M15" value="2.564204761379801" />
-      <entry key="M30" value="4.49144426652" />
-      <entry key="H1" value="6.397924769403705" />
-      <entry key="H2" value="7.865050358169285" />
-      <entry key="H4" value="8.821989340091218" />
-      <entry key="D1" value="9.785018187834952" />
-      <entry key="W1" value="9.968779399480194" />
+      <entry key="MS100" value="1.0028071529105929" />
+      <entry key="MS500" value="1.5977285392293425" />
+      <entry key="S2" value="3.365437225814424" />
+      <entry key="S5" value="4.22811173751413" />
+      <entry key="S10" value="4.590839589139078" />
+      <entry key="S30" value="4.858071824363648" />
+      <entry key="S60" value="4.928317839798677" />
+      <entry key="M2" value="4.96418475446294" />
+      <entry key="M5" value="5.070113814585394" />
+      <entry key="M10" value="5.720708848388942" />
+      <entry key="M15" value="6.556854027825768" />
+      <entry key="M30" value="8.486210441779468" />
+      <entry key="H1" value="10.39453703254798" />
+      <entry key="H2" value="11.863059894052034" />
+      <entry key="H4" value="12.820897380016758" />
+      <entry key="D1" value="13.784819970575032" />
+      <entry key="W1" value="13.968750640474735" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -85,23 +81,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7845840978967508" />
-      <entry key="MS500" value="0.9526379980439373" />
-      <entry key="S2" value="0.987943197140516" />
-      <entry key="S5" value="0.9951597218200828" />
-      <entry key="S10" value="0.9975769252644544" />
-      <entry key="S30" value="0.9991916551761939" />
-      <entry key="S60" value="0.9995957586250902" />
-      <entry key="M2" value="1.0000055464330975" />
-      <entry key="M5" value="1.084591183254393" />
-      <entry key="M10" value="1.7284527099369627" />
-      <entry key="M15" value="2.5624773428014342" />
-      <entry key="M30" value="4.489562367900645" />
-      <entry key="H1" value="6.3964753161455175" />
-      <entry key="H2" value="7.864126050278325" />
-      <entry key="H4" value="8.821461001287233" />
-      <entry key="D1" value="9.784918886716294" />
-      <entry key="W1" value="9.968764904853636" />
+      <entry key="MS100" value="0.9619554244510743" />
+      <entry key="MS500" value="1.581809126489803" />
+      <entry key="S2" value="3.352728087952687" />
+      <entry key="S5" value="4.221068058783593" />
+      <entry key="S10" value="4.5868918156013985" />
+      <entry key="S30" value="4.856649871689289" />
+      <entry key="S60" value="4.927592835193207" />
+      <entry key="M2" value="4.963816547075527" />
+      <entry key="M5" value="5.069662272581579" />
+      <entry key="M10" value="5.719421254559088" />
+      <entry key="M15" value="6.5551070853175055" />
+      <entry key="M30" value="8.484318901431918" />
+      <entry key="H1" value="10.393082582558904" />
+      <entry key="H2" value="11.862132981397409" />
+      <entry key="H4" value="12.82036769875022" />
+      <entry key="D1" value="13.784720438477189" />
+      <entry key="W1" value="13.968736112646866" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -171,23 +167,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -204,9 +200,22 @@
       <updated>1795685150263</updated>
       <workItem from="1795685151329" duration="5423000" />
     </task>
+    <task id="LOCAL-00001" summary="Adding database">
+      <option name="closed" value="true" />
+      <created>1795701677945</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1795701677945</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding database" />
   </component>
 </project>
