@@ -28,8 +28,8 @@ class install_acp_module extends \phpbb\db\migration\migration
 			// Default configuration values (OpenStreetMap out of the box)
 			['config.add', ['gpxviewer_tile_url', 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png']],
 			['config.add', ['gpxviewer_attribution', '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>']],
-			['config.add', ['gpxviewer_map_height', 450]],
-			['config.add', ['gpxviewer_profile_height', 180]],
+			['config.add', ['gpxviewer_map_height', 0]],
+			['config.add', ['gpxviewer_profile_height', 0]],
 			['config.add', ['gpxviewer_max_zoom', 19]],
 
 			// Add a "GPX Viewer" category under the Extensions tab ...

@@ -32,8 +32,8 @@
         tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19,
-        mapHeight: '450px',
-        profileHeight: '180px',
+        mapHeight: 'auto',
+        profileHeight: 'auto',
         messages: {
             noSource: 'No GPX route configured for this viewer.',
             loadFailed: 'Could not download the GPX route.',
@@ -49,6 +49,7 @@
     // Resolve a height from a per-element attribute, falling back to the
     // configured default. A bare integer is a pixel count and must sit within
     // MIN_HEIGHT..MAX_HEIGHT; a value carrying its own unit is used as-is.
+    // "auto" (or 0) means the viewer computes the height from its own width.
     const MIN_HEIGHT = 1;
     const MAX_HEIGHT = 2000;
 
@@ -57,6 +58,10 @@
 
         if (raw === '') {
             return defaultValue;
+        }
+
+        if (raw.toLowerCase() === 'auto' || raw === '0') {
+            return 'auto';
         }
 
         if (/^\d+$/.test(raw)) {
@@ -79,6 +84,45 @@
 
         const level = parseInt(raw, 10);
         return (level >= 1 && level <= defaultValue) ? level : defaultValue;
+    }
+
+    // The elevation plugin ships English labels and runs them through L._().
+    // Translate the ones the viewer shows; unknown strings pass through.
+    // CONFIG.labels can override or extend this table.
+    const LABELS = Object.assign({
+        'Total Length: ': 'Totale lengte: ',
+        'Min Elevation: ': 'Laagste punt: ',
+        'Max Elevation: ': 'Hoogste punt: ',
+        'Avg Elevation: ': 'Gemiddelde hoogte: ',
+        'Total Ascent: ': 'Totaal stijgen: ',
+        'Total Descent: ': 'Totaal dalen: ',
+        'Total Time: ': 'Totale tijd: ',
+        'Min Slope: ': 'Minimale helling: ',
+        'Max Slope: ': 'Maximale helling: ',
+        'Avg Slope: ': 'Gemiddelde helling: ',
+        'x: ': 'afstand: ',
+        'y: ': 'hoogte: ',
+        'T: ': 'tijd: ',
+        'Elevation': 'Hoogteprofiel',
+        'Download': 'Downloaden',
+    }, CONFIG.labels || {});
+
+    // A boolean attribute: 1, true or yes switch it on, anything else is off.
+    function flag(attrValue) {
+        return ['1', 'true', 'yes'].indexOf(String(attrValue === null || attrValue === undefined ? '' : attrValue).trim().toLowerCase()) !== -1;
+    }
+
+    // Automatic sizing. The map keeps a 5:3 aspect ratio (CSS, see ensureStyle),
+    // clamped between 240px and 70% of the viewport. The elevation chart is a
+    // fraction of the width, clamped to a readable range; its container reserves
+    // the chart height plus 20px (the plugin subtracts 20px for its scrollbar)
+    // and then grows with its content, so the summary never overlaps the text below.
+    const CHART_MIN = 120;
+    const CHART_MAX = 260;
+    const CHART_PAD = 20;
+
+    function chartHeight(width) {
+        return Math.max(CHART_MIN, Math.min(CHART_MAX, Math.round(width * 0.2)));
     }
 
     // Load each external file only once, even with multiple components on a page.
@@ -115,6 +159,7 @@
         style.textContent = [
             'gpx-viewer { display: block; }',
             'gpx-viewer .gpx-map { width: 100%; border-radius: 8px; }',
+            'gpx-viewer .gpx-map.gpx-auto { aspect-ratio: 5 / 3; min-height: 240px; max-height: 70vh; }',
             'gpx-viewer .gpx-profile { width: 100%; margin-top: 10px; }',
             'gpx-viewer .gpx-error { border: 1px solid #a33; background: #fdd; color: #600;',
             '    padding: 12px; border-radius: 8px; font: 14px/1.4 sans-serif; }',
@@ -143,13 +188,24 @@
             const profileHeight = height(this.getAttribute('profile-height'), config('profileHeight'));
             const maxZoom = zoom(this.getAttribute('max-zoom'), config('maxZoom'));
             this._maxZoom = maxZoom;
+            const wantTime = flag(this.getAttribute('time'));
 
             // Light DOM (no Shadow DOM): Leaflet CSS and the elevation plugin's
             // selector-based "elevationDiv" don't work well inside a shadow root.
             ensureStyle();
+            const autoMap = mapHeight === 'auto';
+            const autoProfile = profileHeight === 'auto';
             this.innerHTML =
-                '<div class="gpx-map" id="' + mapId + '" style="height:' + mapHeight + '"></div>' +
-                '<div class="gpx-profile" id="' + profileId + '" style="height:' + profileHeight + '"></div>';
+                '<div class="gpx-map' + (autoMap ? ' gpx-auto' : '') + '" id="' + mapId + '"' +
+                    (autoMap ? '' : ' style="height:' + mapHeight + '"') + '></div>' +
+                '<div class="gpx-profile' + (autoProfile ? ' gpx-auto' : '') + '" id="' + profileId + '"' +
+                    (autoProfile ? '' : ' style="height:' + profileHeight + '"') + '></div>';
+
+            const profileDiv = this.querySelector('.gpx-profile');
+            const initialChartHeight = chartHeight(this.clientWidth || 600);
+            if (autoProfile) {
+                profileDiv.style.minHeight = (initialChartHeight + CHART_PAD) + 'px';
+            }
 
             if (!url) {
                 this._fail(message('noSource'));
@@ -188,6 +244,10 @@
                 return;
             }
 
+            // Without real timestamps the plugin invents times from an assumed
+            // walking speed, so only show the time axis when the file has them.
+            const showTime = wantTime && doc.querySelectorAll('trkpt > time, rtept > time').length >= 2;
+
             try {
                 loadCss(LEAFLET_CSS);
                 loadCss(ELEVATION_CSS);
@@ -196,6 +256,10 @@
                 await loadScript(LEAFLET_JS);
                 await loadScript(D3_JS);
                 await loadScript(ELEVATION_JS);
+
+                // The plugin only installs its identity fallback when L._ is
+                // missing, so this replacement stays in place.
+                L._ = L.i18n = (string) => (Object.prototype.hasOwnProperty.call(LABELS, string) ? LABELS[string] : string);
 
                 // The plugin keeps these as prototype properties (not options),
                 // each pointing at unpkg by default.
@@ -221,14 +285,49 @@
                     collapsed: false,
                     closeBtn: false,
                     summary: 'inline',
+                    time: showTime,
+                    edgeScale: false,
+                    height: initialChartHeight,
                 }).addTo(map);
 
                 elevationControl.load(text);
 
                 this._map = map;
+
+                if (autoMap || autoProfile) {
+                    this._observeSize(map, elevationControl, profileDiv, autoProfile);
+                }
             } catch (err) {
                 this._fail(message('renderFailed'), err && err.message);
             }
+        }
+
+        // Re-fit when the available width changes (window resize, rotation,
+        // sidebar toggles). Only width changes count: height changes are our own.
+        _observeSize(map, elevationControl, profileDiv, autoProfile) {
+            if (typeof ResizeObserver === 'undefined') return;
+
+            let lastWidth = this.clientWidth;
+            let timer = null;
+
+            this._observer = new ResizeObserver(() => {
+                const width = this.clientWidth;
+                if (width === lastWidth) return;
+                lastWidth = width;
+
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    if (!this._map) return;
+                    if (autoProfile) {
+                        const h = chartHeight(width);
+                        profileDiv.style.minHeight = (h + CHART_PAD) + 'px';
+                        elevationControl.options.height = h;
+                    }
+                    // Fires Leaflet's "resize", which makes the plugin redraw the chart.
+                    map.invalidateSize();
+                }, 100);
+            });
+            this._observer.observe(this);
         }
 
         _fail(text, detail) {
@@ -240,6 +339,10 @@
         }
 
         disconnectedCallback() {
+            if (this._observer) {
+                this._observer.disconnect();
+                this._observer = null;
+            }
             if (this._map) {
                 this._map.remove();
             }

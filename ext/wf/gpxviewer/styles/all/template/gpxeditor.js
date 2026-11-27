@@ -3,7 +3,7 @@
 
 	// A [gpx=N ...] tag in the message text, with its key=value pairs.
 	var TAG_PATTERN = /\[gpx=(\d+)([^\]]*)\]/gi;
-	var KEY_PATTERN = /(map-height|profile-height|max-zoom)=(\d+)/gi;
+	var KEY_PATTERN = /(map-height|profile-height|max-zoom|time)=(\d+)/gi;
 
 	// Find the tag a caret at "from" is strictly inside of (not just before its
 	// "[" or just after its "]"), so a caret left behind a freshly inserted tag
@@ -79,6 +79,11 @@
 			{ key: 'map-height', input: document.getElementById('gpx-editor-map-height') },
 			{ key: 'profile-height', input: document.getElementById('gpx-editor-profile-height') },
 			{ key: 'max-zoom', input: document.getElementById('gpx-editor-max-zoom') }
+		];
+
+		// Boolean keys: a checkbox that writes "key=1" when ticked and nothing when not.
+		var checks = [
+			{ key: 'time', input: document.getElementById('gpx-editor-time') }
 		];
 
 		var buttonTitle = button.getAttribute('title') || '';
@@ -187,8 +192,12 @@
 			return value === null ? '' : ' ' + field.key + '=' + value;
 		}
 
+		function checkKey(field) {
+			return field.input && field.input.checked ? ' ' + field.key + '=1' : '';
+		}
+
 		function buildTag(attachId) {
-			return '[gpx=' + attachId + fields.map(numberKey).join('') + ']';
+			return '[gpx=' + attachId + fields.map(numberKey).join('') + checks.map(checkKey).join('') + ']';
 		}
 
 		// Fill each field from the tag being edited, or with the board default
@@ -198,6 +207,12 @@
 				if (field.input) {
 					var value = values ? values[field.key] : undefined;
 					field.input.value = value !== undefined ? value : field.input.placeholder;
+				}
+			});
+
+			checks.forEach(function (field) {
+				if (field.input) {
+					field.input.checked = !!values && values[field.key] === '1';
 				}
 			});
 		}

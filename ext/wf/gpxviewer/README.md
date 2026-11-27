@@ -34,8 +34,8 @@ Find them at **ACP → Extensions → GPX Viewer → GPX Viewer settings**.
 | --- | --- | --- |
 | **Tile URL** | `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png` | The tile server the map fetches tiles from. Keep `{s}`, `{z}`, `{x}` and `{y}` as placeholders. |
 | **Attribution** | `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>` | The credit shown in the map corner. Basic HTML links are allowed. |
-| **Map height** | `450` | Height of the map, in pixels. |
-| **Profile height** | `180` | Height of the elevation profile, in pixels. |
+| **Map height** | `0` (auto) | Height of the map in pixels. `0` = automatic: a 5:3 ratio of the available width, between 240px and 70% of the viewport height. |
+| **Profile height** | `0` (auto) | Height of the elevation profile in pixels. `0` = automatic: scales with the width and grows with its content, so it never overlaps the text below. |
 | **Maximum zoom** | `19` | The deepest zoom level readers can reach. |
 
 Changes apply the next time a post with a viewer is displayed. Every save is recorded in the admin log.
@@ -59,9 +59,11 @@ Readers see the route rendered using their download permission for the attachmen
 
 A viewer always uses the board's **Map height** and **Profile height** unless the tag overrides them:
 
-- `[gpx=N]` — both heights from the ACP settings.
+- `[gpx=N]` — both heights from the ACP settings (automatic by default; the viewer re-fits when the width changes).
 - `[gpx=N map-height=500]` — taller map, default profile height.
 - `[gpx=N map-height=500 profile-height=250]` — both overridden.
+
+- `[gpx=N time=1]` — also show the time axis (and total time) in the elevation profile. Off by default, and only shown when the GPX file contains a timestamp per point (the viewer never makes up times).
 
 Each height is a plain number of pixels between `1` and `2000`. The keys are optional and independent, and may be written in any order. A value that is not a whole number in that range is ignored (the board default is used for that height), so a typo never breaks the viewer. The editor panel inserts these keys for you.
 

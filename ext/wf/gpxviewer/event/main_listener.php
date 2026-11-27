@@ -91,8 +91,8 @@ class main_listener implements EventSubscriberInterface
 			'tileUrl'		=> isset($this->config['gpxviewer_tile_url']) ? (string) $this->config['gpxviewer_tile_url'] : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			'attribution'	=> isset($this->config['gpxviewer_attribution']) ? (string) $this->config['gpxviewer_attribution'] : '',
 			'maxZoom'		=> isset($this->config['gpxviewer_max_zoom']) ? (int) $this->config['gpxviewer_max_zoom'] : 19,
-			'mapHeight'		=> (isset($this->config['gpxviewer_map_height']) ? (int) $this->config['gpxviewer_map_height'] : 450) . 'px',
-			'profileHeight'	=> (isset($this->config['gpxviewer_profile_height']) ? (int) $this->config['gpxviewer_profile_height'] : 180) . 'px',
+			'mapHeight'		=> $this->height_setting('gpxviewer_map_height'),
+			'profileHeight'	=> $this->height_setting('gpxviewer_profile_height'),
 		];
 
 		return json_encode($config, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
@@ -106,6 +106,20 @@ class main_listener implements EventSubscriberInterface
 	 *
 	 * @param \phpbb\event\data	$event	Event object
 	 */
+	/**
+	 * A height setting as the viewer expects it: "auto" when 0/unset
+	 * (calculated from the available width), otherwise a pixel value.
+	 *
+	 * @param string $key
+	 * @return string
+	 */
+	protected function height_setting($key)
+	{
+		$value = isset($this->config[$key]) ? (int) $this->config[$key] : 0;
+
+		return $value > 0 ? $value . 'px' : 'auto';
+	}
+
 	public function load_editor_language($event)
 	{
 		$this->language->add_lang('common', 'wf/gpxviewer');
@@ -113,8 +127,8 @@ class main_listener implements EventSubscriberInterface
 		// Show the board's current defaults as the panel fields' placeholders, so
 		// authors can see what a blank field means.
 		$this->template->assign_vars([
-			'GPX_PANEL_MAP_HEIGHT_DEFAULT'		=> isset($this->config['gpxviewer_map_height']) ? (int) $this->config['gpxviewer_map_height'] : 450,
-			'GPX_PANEL_PROFILE_HEIGHT_DEFAULT'	=> isset($this->config['gpxviewer_profile_height']) ? (int) $this->config['gpxviewer_profile_height'] : 180,
+			'GPX_PANEL_MAP_HEIGHT_DEFAULT'		=> $this->height_setting('gpxviewer_map_height') === 'auto' ? 'auto' : (int) $this->config['gpxviewer_map_height'],
+			'GPX_PANEL_PROFILE_HEIGHT_DEFAULT'	=> $this->height_setting('gpxviewer_profile_height') === 'auto' ? 'auto' : (int) $this->config['gpxviewer_profile_height'],
 			'GPX_PANEL_MAX_ZOOM_DEFAULT'		=> isset($this->config['gpxviewer_max_zoom']) ? (int) $this->config['gpxviewer_max_zoom'] : 19,
 		]);
 	}

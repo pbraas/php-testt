@@ -73,6 +73,10 @@
 	width: 72px;
 }
 
+.gpx-editor-check {
+	justify-self: start;
+}
+
 .gpx-editor-actions {
 	margin: 0 0 8px;
 	text-align: right;
