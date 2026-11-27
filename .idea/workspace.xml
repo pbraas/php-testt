@@ -7,8 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="restoring styles">
-      <change beforePath="$PROJECT_DIR$/cache/production/data_global.php" beforeDir="false" afterPath="$PROJECT_DIR$/cache/production/data_global.php" afterDir="false" />
+    <list default="true" id="d0af040d-da07-4986-b498-5f9eaa21c119" name="Changes" comment="ignoring the cache folder">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,23 +45,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.00076105453047" />
-      <entry key="MS500" value="1.2959412421052086" />
-      <entry key="S2" value="2.5642257719975774" />
-      <entry key="S5" value="3.7453450201990743" />
-      <entry key="S10" value="4.587142709054619" />
-      <entry key="S30" value="5.440293221757796" />
-      <entry key="S60" value="5.707020082534656" />
-      <entry key="M2" value="5.871938051511929" />
-      <entry key="M5" value="6.519081941574686" />
-      <entry key="M10" value="7.904229121814979" />
-      <entry key="M15" value="9.16246791939722" />
-      <entry key="M30" value="11.90235004881803" />
-      <entry key="H1" value="14.671224374557086" />
-      <entry key="H2" value="16.835772886151936" />
-      <entry key="H4" value="18.253380833308757" />
-      <entry key="D1" value="19.681219296844816" />
-      <entry key="W1" value="19.953705140363613" />
+      <entry key="MS100" value="1.0237735542661597" />
+      <entry key="MS500" value="1.8330184001342098" />
+      <entry key="S2" value="3.8584218974295363" />
+      <entry key="S5" value="5.316117599532198" />
+      <entry key="S10" value="6.058712745043618" />
+      <entry key="S30" value="6.696959319973222" />
+      <entry key="S60" value="7.293751675902368" />
+      <entry key="M2" value="8.592141494915992" />
+      <entry key="M5" value="10.916265129090027" />
+      <entry key="M10" value="13.136195507471607" />
+      <entry key="M15" value="14.742427167543296" />
+      <entry key="M30" value="17.943626446270844" />
+      <entry key="H1" value="21.0687830569807" />
+      <entry key="H2" value="23.486740536164913" />
+      <entry key="H4" value="25.063249405908913" />
+      <entry key="D1" value="26.64691345406543" />
+      <entry key="W1" value="26.948733007166066" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +83,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.13656686628234926" />
-      <entry key="MS500" value="0.9638246881785808" />
-      <entry key="S2" value="2.4651636425076435" />
-      <entry key="S5" value="3.70335137066109" />
-      <entry key="S10" value="4.565522589884884" />
-      <entry key="S30" value="5.432899550207197" />
-      <entry key="S60" value="5.703295463911861" />
-      <entry key="M2" value="5.870066777600902" />
-      <entry key="M5" value="6.518280616255333" />
-      <entry key="M10" value="7.903418497242373" />
-      <entry key="M15" value="9.161369736945918" />
-      <entry key="M30" value="11.900907043358265" />
-      <entry key="H1" value="14.669947774922953" />
-      <entry key="H2" value="16.834894754168424" />
-      <entry key="H4" value="18.252858902067494" />
-      <entry key="D1" value="19.681117903936357" />
-      <entry key="W1" value="19.953690255677092" />
+      <entry key="MS100" value="0.9820301393635158" />
+      <entry key="MS500" value="1.8165319672805582" />
+      <entry key="S2" value="3.8490481837285886" />
+      <entry key="S5" value="5.310834554434844" />
+      <entry key="S10" value="6.055678009718943" />
+      <entry key="S30" value="6.695791689240766" />
+      <entry key="S60" value="7.292873115701536" />
+      <entry key="M2" value="8.591315522807603" />
+      <entry key="M5" value="10.91566220360851" />
+      <entry key="M10" value="13.13550563474664" />
+      <entry key="M15" value="14.7414585670068" />
+      <entry key="M30" value="17.942279337907717" />
+      <entry key="H1" value="21.067548806559227" />
+      <entry key="H2" value="23.485875623722624" />
+      <entry key="H4" value="25.062730435539358" />
+      <entry key="D1" value="26.64681182811815" />
+      <entry key="W1" value="26.94871806772572" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -152,6 +152,7 @@
     <option name="panelTemplate">
       <template>
         <option name="ensembleEnabled" value="true" />
+        <option name="ensembleTierId" value="balance" />
         <option name="modeId" value="Agent" />
         <option name="model">
           <model>
@@ -218,7 +219,23 @@
       <option name="project" value="LOCAL" />
       <updated>1795702565885</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ignoring the cache folder">
+      <option name="closed" value="true" />
+      <created>1795702766958</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1795702766958</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ignoring the cache folder">
+      <option name="closed" value="true" />
+      <created>1795702774218</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1795702774218</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +244,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding database" />
     <MESSAGE value="restoring styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="restoring styles" />
+    <MESSAGE value="ignoring the cache folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="ignoring the cache folder" />
   </component>
 </project>
