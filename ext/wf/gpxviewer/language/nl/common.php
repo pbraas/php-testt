@@ -46,6 +46,7 @@ $lang = array_merge($lang, [
 	'GPX_PANEL_MAP_HEIGHT'		=> 'Kaarthoogte (px)',
 	'GPX_PANEL_PROFILE_HEIGHT'	=> 'Profielhoogte (px)',
 	'GPX_PANEL_MAX_ZOOM'		=> 'Maximaal zoomniveau',
+	'GPX_PANEL_TIME'		=> 'Tijdsas tonen',
 	'GPX_PANEL_EMPTY'		=> 'Er zijn nog geen GPX-bestanden aan dit bericht gekoppeld.',
 	'GPX_PANEL_UPLOAD'		=> 'Een GPX-bestand uploaden',
 	'GPX_PANEL_CLOSE'		=> 'Sluiten',

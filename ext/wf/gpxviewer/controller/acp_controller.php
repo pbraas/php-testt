@@ -94,12 +94,12 @@ class acp_controller
 				$errors[] = $this->language->lang('ACP_GPXVIEWER_TILE_URL_REQUIRED');
 			}
 
-			if ($map_height < 1)
+			if ($map_height < 0)
 			{
 				$errors[] = $this->language->lang('ACP_GPXVIEWER_MAP_HEIGHT_REQUIRED');
 			}
 
-			if ($profile_height < 1)
+			if ($profile_height < 0)
 			{
 				$errors[] = $this->language->lang('ACP_GPXVIEWER_PROFILE_HEIGHT_REQUIRED');
 			}
